@@ -2,7 +2,7 @@ body{
     font-family: sans-serif;
 }
 
-#boardGame{
+#gameBoard{
     background-color: #232323;
     display: grid;
     grid-template-columns: 6rem 6rem 6rem;
@@ -12,7 +12,7 @@ body{
     max-width: 19rem;
 }
 
-#boardGame span{
+#gameBoard span{
     background-color: #ddd;
     display: grid;
     place-content: center;
@@ -20,6 +20,6 @@ body{
     cursor: pointer;
 }
 
-#boardGame span.win{
+#gameBoard span.win{
     background-color: #25a340;
 }

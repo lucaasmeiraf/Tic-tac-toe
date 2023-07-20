@@ -19,6 +19,7 @@ function initialize(){
         element.classList.add('cursor-pointer')
         element.addEventListener('click', handleBoardClick)
     })
+    document.querySelector('#start').innerText = 'Restart!'
 }
 
 function getWinRegions() {
@@ -59,15 +60,23 @@ function handleWin(regions){
 
     // Tentativa de desablitar os campos em branco quando um jogador ganhar.
     gameBoard.forEach((region) => {
-        if(!region.value){
+        if(!region.innerText){
             disableRegion(region)
         }
     })
 
     // Tentativa de marcar as regiões que não formaram uma sequência de vitória
     gameBoard.forEach((region) =>{
-        if(!region.classList.contains('win') && region.innerText !== ''){
-            region.classList.add('lost')
+        if(!region.classList.contains('win')){
+            if(turnplayer === 'player1'){
+                if(region.innerText === 'O'){
+                    region.classList.add('lost')
+                }   
+            }else{
+                if(region.innerText === 'X'){
+                    region.classList.add('lost')
+                }
+            }
         }
     })
 
@@ -84,9 +93,11 @@ function handleBoardClick(ev){
     const column = rowColumnPair[1]
     if(turnplayer === 'player1'){
         span.innerText = 'X'
+        span.setAttribute('name', 'player1')
         vBoard[row][column] = 'X'
     }else{
         span.innerText = 'O'
+        span.setAttribute('name', 'player2')
         vBoard[row][column] = 'O'
     }
 
